@@ -19,7 +19,7 @@ public class ScheduleService {
 	@Autowired
 	private ScheduleRepository scheduleRepository;
 	
-	public void create(Schedule schedule) {
+	public void create(Schedule schedule) throws BadRequestException {
 		if(!schedule.getStartSchedule().isBefore(schedule.getEndSchedule())) throw new BadRequestException("A data de inicío não pode ser menor ou igual a data de fim.");
 		scheduleRepository.saveAndFlush(schedule);
 		

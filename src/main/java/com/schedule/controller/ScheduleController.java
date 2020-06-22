@@ -47,7 +47,7 @@ public class ScheduleController {
 	}
 	
 	@PostMapping(path = "/save")
-	public void create(@RequestBody ScheduleDTO scheduleDTO) {
+	public void create(@RequestBody ScheduleDTO scheduleDTO){
 		scheduleService.create(ScheduleMapper.fromDTO(scheduleDTO));
 	}
 	

@@ -16,21 +16,21 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
   @ExceptionHandler(Exception.class)
-  public final ResponseEntity<ExceptionResponse> handleAllExceptions(Exception e, WebRequest request) {
+  public final ResponseEntity<ExceptionResponse> exception(Exception e, WebRequest request) {
     ExceptionResponse exceptionResponse = new ExceptionResponse(LocalDateTime.now(), e.getMessage(),
         request.getDescription(false));
     return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
   }
   
   @ExceptionHandler(BadRequestException.class)
-  public final ResponseEntity<ExceptionResponse> handleAllExceptions(BadRequest e, WebRequest request) {
-    ExceptionResponse exceptionResponse = new ExceptionResponse(LocalDateTime.now(), e.getMessage(),
+  public final ResponseEntity<ExceptionResponse> exception(BadRequestException exception, WebRequest request) {
+    ExceptionResponse exceptionResponse = new ExceptionResponse(LocalDateTime.now(), exception.getMessage(),
         request.getDescription(false));
     return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler(NotFoundException.class)
-  public final ResponseEntity<ExceptionResponse> handleUserNotFoundException(NotFoundException e, WebRequest request) {
+  public final ResponseEntity<ExceptionResponse> exception(NotFoundException e, WebRequest request) {
     ExceptionResponse exceptionResponse = new ExceptionResponse(LocalDateTime.now(), e.getMessage(),
         request.getDescription(false));
     return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
