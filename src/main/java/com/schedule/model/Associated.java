@@ -27,6 +27,7 @@ public class Associated implements Serializable {
 	public Long id;
 
 	@NotNull
+	@Column(unique=true)
 	public String cpf;
 	
 	@NotNull
